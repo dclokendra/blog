@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %}List Post{% endblock %}
+
+{% block 'body' %}
+    <div class="conntainer">
+        <div class="row">
+            {% include 'component/sidenav.html' %}
+            <div class="col-md-9">
+                <h3>List Post</h3>
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Publish Date</th>
+                            <th>Description</th>
+{#                            <th>Image</th>#}
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for b in blog %}
+                            <tr>
+                                <td>{{ 1 }}</td>
+                                <td>{{ b.title }}</td>
+                                <td>{{ b.category }}</td>
+                                <td>{{ b.publish_date }}</td>
+                                <td>{{ b.description | truncatewords:10}}</td>
+{#                                <td><img src="{{ MEDIA_URL }}{{ b.image.url }}" style="height: 50px;width: 50px"></td>#}
+                                <td><button class="btn btn-warning"><a href="{% url 'editpost'  b.id %}">Edit</a></button>
+                                    <button class="btn btn-danger"><a href="{% url 'deletepost' b.id %}" onclick="return confirm('Are you sure to Delete?')">Delete</a></button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>SN</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Publish Date</th>
+                            <th>Description</th>
+{#                            <th>Image</th>#}
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

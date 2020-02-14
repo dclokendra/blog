@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %} Home Page {% endblock %}
+
+{% block 'body' %}
+    <div class="container">
+        <div class="row">
+            {% for b in blog %}
+            <div class="content col-md-12">
+                <article class="entry entry__standard entry__with-icon">
+								<header class="entry-header">
+									<div class="entry-author visible-md visible-lg">
+{#										<img src="images/samples/post-author1.jpg" alt="">#}
+{#										<span class="author-name">Dan Fisher</span>#}
+									</div>
+									<h3><a href="{% url 'view_more' b.id %}">{{ b.title }}</a></h3>
+									<div class="entry-meta">
+										<span class="entry-date"><i class="fa fa-calendar"></i> {{ b.publish_date }}</span>
+										<span class="entry-category"><i class="fa fa-folder"></i>{{ b.category }}</span>
+{#										<span class="entry-comments"><i class="fa fa-comments"></i> <a href="#">0 Comments</a></span>#}
+									</div>
+								</header>
+								<div class="entry-thumb-wrapper">
+									<figure class="alignnone entry-thumb">
+										<a href=""><img src="{{ MEDIA_URL }}{{ b.image.url }}" alt=""></a>
+									</figure>
+								</div>
+								<div class="excerpt">
+                                    {{ b.description | truncatewords:20 }}
+								</div>
+								<footer class="entry-footer">
+									<a href="{% url 'view_more' b.id %}" class="btn btn-primary">Continue Reading</a>
+								</footer>
+							</article>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
+{#{% block 'body' %}#}
+{#    <div class="container">#}
+{#        {% for b in blog %}#}
+{#            <div class="row">#}
+{#                <h3>{{ b.title }}</h3>#}
+{#                <span> {{ b.category }} | {{ b.publish_date }}</span>#}
+{#                <br/>#}
+{#                <img src="{{ MEDIA_URL }}{{ b.image.url }}" style="width:500px;height:auto">#}
+{#                <p>#}
+{#                    {{ b.description | truncatewords:20 }}#}
+{#                </p>#}
+{#                <a href="{% url 'view_more' b.id %}" class="btn btn-primary">View More</a>#}
+{#                <hr/>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#{% endblock %}#}

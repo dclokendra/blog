@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %}Create Post{% endblock %}
+
+{% block 'body' %}
+    <div class="conntainer">
+        <div class="row">
+            {% include 'component/sidenav.html' %}
+            <div class="col-md-9">
+                <h3>Create Post</h3>
+                  {% include 'component/message.html' %}
+                <form method="post">
+                     {% csrf_token %}
+                    {{ form.as_p }}
+{#                    <div class="input-group">#}
+{#                        <label>Category</label>#}
+{#                        <select class="form-control">#}
+{##}
+{#                        </select>#}
+{#                    </div>#}
+{#                    <div class="input-group">#}
+{#                        <label>Title</label>#}
+{#                        <input type="text" class="form-control" name="username">#}
+{#                    </div>#}
+{#                    <div class="input-group">#}
+{#                        <label>Description</label>#}
+{#                        <textarea name="description" class="form-control"></textarea>#}
+{#                    </div>#}
+{#                     <div class="input-group">#}
+{#                        <label>Image</label>#}
+{#                        <input type="file" name="image" class="form-control">#}
+{#                    </div>#}
+{#                     <div class="input-group">#}
+{#                        <label>Publish Date</label>#}
+{#                        <input type="date" name="publish_date" class="form-control" >#}
+{#                    </div>#}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

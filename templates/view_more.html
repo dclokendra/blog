@@ -1,0 +1,124 @@
+{% extends 'base/base.html' %}
+
+{% block 'title' %}Blog-{% endblock %}
+
+{% block 'body' %}
+    <div class="container">
+        <div class="row">
+            <div class="content col-md-8">
+                <article class="entry entry__standard entry__with-icon">
+                    <header class="entry-header">
+{#                        <div class="entry-author visible-md visible-lg">#}
+{#                            <img src="images/samples/post-author1.jpg" alt="">#}
+{#                            <span class="author-name">Dan Fisher</span>#}
+{#                        </div>#}
+                        <h3>{{blog.title}}</h3>
+                        <div class="entry-meta">
+                            <span class="entry-date"><i class="fa fa-calendar"></i> {{ blog.published_date }}</span>
+                            <span class="entry-category"><i class="fa fa-folder"></i> {{blog.category}}</span>
+{#                            <span class="entry-comments"><i class="fa fa-comments"></i> <a href="#">0 Comments</a></span>#}
+                        </div>
+                    </header>
+                    <div class="entry-thumb-wrapper">
+                        <figure class="alignnone entry-thumb">
+                            <img src="{{ MEDIA_URL }}{{ blog.image.url }}" alt="">
+                        </figure>
+                    </div>
+                    <div class="entry-content">
+                        <p>{{ blog.description }}</p>
+                    </div>
+                </article>
+            </div>
+            <aside class="sidebar col-md-4">
+{##}
+							<hr class="visible-sm visible-xs lg">
+
+							<!-- Widget :: Categories -->
+							<div class="widget_categories widget widget__sidebar">
+								<h4 class="widget-title">Categories</h4>
+								<div class="widget-content">
+									<ul>
+                                        {% for c in category %}
+										<li><a href="#">{{c.title}}</li>
+                                        {% endfor %}
+									</ul>
+								</div>
+							</div>
+{#							<!-- /Widget :: Categories -->#}
+{##}
+{#							<!-- Widget :: Tags Cloud -->#}
+{#							<div class="widget_tag_cloud widget widget__sidebar">#}
+{#								<h4 class="widget-title">Tags</h4>#}
+{#								<div class="widget-content">#}
+{#									<div class="tagcloud">#}
+{#										<a href="#">painting</a>#}
+{#										<a href="#">design</a>#}
+{#										<a href="#">refinish</a>#}
+{#										<a href="#">pools</a>#}
+{#										<a href="#">handiwork</a>#}
+{#										<a href="#">furniture</a>#}
+{#										<a href="#">drywall</a>#}
+{#										<a href="#">electrical</a>#}
+{#									</div>#}
+{#								</div>#}
+{#							</div>#}
+{#							<!-- /Widget :: Tags Cloud -->#}
+{##}
+{#							<!-- Widget :: Text Widget -->#}
+{#							<div class="widget_text widget widget__sidebar">#}
+{#								<h4 class="widget-title">Short Info</h4>#}
+{#								<div class="widget-content">#}
+{#									Depending on your latitude, winter nights can be long enough to lose a considerable amount of heat from what otherwise is a well-insulated home.#}
+{#								</div>#}
+{#							</div>#}
+{#							<!-- /Widget :: Text Widget -->#}
+{##}
+{#							<!-- Widget :: Latest Posts -->#}
+							<div class="widget_latest-posts widget widget__sidebar">
+								<h4 class="widget-title">Latest Posts</h4>
+								<div class="widget-content">
+									<ul class="latest-posts-list">
+                                        {% for b in blogs %}
+										<li>
+											<figure class="thumbnail"><a href="#"><img src="{{ MEDIA_URL }}{{ b.image.url }}" style="height: 50px;width: 50px"></a></figure>
+											<h5 class="title"><a href="#">{{b.title}}</a></h5>
+											<span class="date">{{b.publish_date}}</span>
+										</li>
+                                        {% endfor %}
+									</ul>
+								</div>
+							</div>
+{#							<!-- /Widget :: Latest Posts -->#}
+{#  #}
+{#							<!-- Widget :: Flickr -->#}
+{#							<div class="widget_flickr widget widget__sidebar">#}
+{#								<h4 class="widget-title">Flickr</h4>#}
+{#								<div class="widget-content">#}
+{#									<!-- Flickr images will appear here -->#}
+{#									<ul class="flickr-feed"></ul>#}
+{#								</div>#}
+{#							</div>#}
+{#							<!-- /Widget :: Flickr -->#}
+{##}
+						</aside>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{#{% block 'body' %}#}
+{#     <div class="container">#}
+{#            <div class="row">#}
+{#                <h3>{{ blog.title }}</h3>#}
+{#                <span> {{ blog.category }} | {{ blog.publish_date }}</span>#}
+{#                <br/>#}
+{#                <div class="col-md-6">#}
+{#                    <img src="{{ MEDIA_URL }}{{ blog.image.url }}" style="width:500px;height:auto">#}
+{#                </div>#}
+{#                <p>#}
+{#                    {{ blog.description }}#}
+{#                </p>#}
+{#            </div>#}
+{#    </div>#}
+{#{% endblock %}#}
